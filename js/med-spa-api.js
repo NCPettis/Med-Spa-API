@@ -17,10 +17,9 @@ function getCity(){
         .then((data) => {
         console.log(data)
 
-        let latt = data.results.location.lat
-        let lon = data.results.location.lng
+        let latt = data.results[0].location.lat
+        let lon = data.results[0].location.lng
 
-        console.log(typeOf.latt)
 
     fetch(`https://currentuvindex.com/api/v1/uvi?latitude=${latt}&longitude=${lon}`)
         .then(res => res.json())
