@@ -3,22 +3,31 @@ console.log('Med Spa')
 // API UV Index - https://currentuvindex.com/api/v1/uvi?latitude=40.6943&longitude=-73.9249
 // Secondary API - https://currentuvindex.com/api?ref=freepublicapis.com
 // By the index determine if patients can get a skin treatment or not
+// Desired API - https://verifiedsupplementdata.com/api/v1/recommend/{supplement}/all.json
 
+// `https://api.geocod.io/v2/geocode?api_key=ad26dd29ad9fba7ef761c1fbd11173132d36db9&q=${zipCode}`
+// KEY - ad26dd29ad9fba7ef761c1fbd11173132d36db9
 document.querySelector('button').addEventListener('click', getCity)
-let city = document.querySelector("#cityInput").value
 
 function getCity(){
-    fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${city}&language=en&format=json`)
+    const zipCode = document.querySelector("#cityInput").value
+
+    fetch(`https://api.geocod.io/v2/geocode?api_key=ad26dd29ad9fba7ef761c1fbd11173132d36db9&q=${zipCode}`)
+        .then(res => res.json())
+        .then((data) => {
+        console.log(data)
+
+        let latt = data.results.location.lat
+        let lon = data.results.location.lng
+
+        console.log(typeOf.latt)
+
+    fetch(`https://currentuvindex.com/api/v1/uvi?latitude=${latt}&longitude=${lon}`)
         .then(res => res.json())
         .then((data) => {
         console.log(data)
 
 
-
-
-
-
-
-
         })
-    }
+    })
+}
