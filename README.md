@@ -24,6 +24,8 @@ The application requires an internet connection to access its external APIs. API
 
 ## Screenshots and Demo
 
+Live Link: https://auroramedspa.netlify.app/
+
 ### Application Interface
 
 ![Aurora MED SPA application interface](images/aurora-med-spa.png)
